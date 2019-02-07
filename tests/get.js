@@ -76,4 +76,28 @@ QUnit.module('Тестируем функцию get', function () {
 
 	});
 	
+	QUnit.test('get работает правильно c некорректными аргументами', function (assert) {
+		const object = {
+    		foo: {
+        		bar: 42
+    		},
+    		length: "test"
+		};
+
+		assert.strictEqual(get(), undefined);
+		assert.strictEqual(get(object), object);
+		assert.strictEqual(get(undefined), undefined);
+		assert.strictEqual(get(undefined, undefined), undefined);
+
+	});
+	
+	QUnit.test('get работает правильно c пустым объектом', function (assert) {
+		const object = {};
+
+		assert.strictEqual(get(object), object);
+		assert.strictEqual(get(object, ".test"), undefined);
+		assert.strictEqual(get(object, ".test.1.length"), undefined);
+
+	});
+	
 });
