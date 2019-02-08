@@ -16,9 +16,10 @@ const get = (object = undefined, string = ".") => {
 
         if (!(object.hasOwnProperty(stringArray[i]))) {
             return;
-        } else {
-            object = object[stringArray[i]];
         }
+
+        object = object[stringArray[i]];
+
     }
     return object;
 }
